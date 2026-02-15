@@ -1,0 +1,135 @@
+{
+  "info": {
+    "name": "VendingMachine API with Tests",
+    "_postman_id": "vending-machine-collection-tests",
+    "description": "Collection for testing VendingMachine endpoints with header checks",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Insert Coin",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"coin\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": [""]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 204', function () {",
+              "    pm.response.to.have.status(204);",
+              "});",
+              "",
+              "pm.test('X-Coins header is present', function () {",
+              "    pm.response.to.have.header('X-Coins');",
+              "    var coins = parseInt(pm.response.headers.get('X-Coins'));",
+              "    pm.expect(coins).to.be.a('number').that.is.greaterThan(0);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Return Coins",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": [""]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 204', function () {",
+              "    pm.response.to.have.status(204);",
+              "});",
+              "",
+              "pm.test('X-Coins header is present', function () {",
+              "    pm.response.to.have.header('X-Coins');",
+              "    var coins = parseInt(pm.response.headers.get('X-Coins'));",
+              "    pm.expect(coins).to.be.a('number');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "Get Inventory",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/inventory",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["inventory"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Inventory by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/inventory/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["inventory", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Purchase Item",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/inventory/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["inventory", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

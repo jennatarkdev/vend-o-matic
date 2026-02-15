@@ -1,0 +1,23 @@
+{
+  "name": "vend-o-matic",
+  "version": "1.0.0",
+  "description": "Marigold Technical Interview Code Base",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennatarkdev/vend-o-matic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennatarkdev/vend-o-matic/issues"
+  },
+  "homepage": "https://github.com/jennatarkdev/vend-o-matic#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
